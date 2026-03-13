@@ -67,15 +67,16 @@
       (else (add (add1 n) (sub1 m))))))
 
 ;; 14:49
-; ... but this is form in book; I think this form was chosen (and that whole
-; nonsense with (k + 1) + n -> (k + n) + 1, so as to introduce the "wrapper".
+; ... but this is form in book.
+;
+; I think this form was chosen, and that whole nonesnse with
+;   (k + 1) + n -> (k + n) + 1
+; so as to introduce the "wrapper".
 (define add
   (lambda (n m)
     (cond
       ((zero? m) n)
-      ; this seems more natural...
       (else (add1 (add n) (sub1 m))))))
-
 
 ;; -- various tests
 an-area
