@@ -32,8 +32,10 @@
          (ref θ 1)))))
 
 ;; -- testing
-((line-initial 2) 2 0)
-((line-shorter 2) 2 0)
-; NOTE: it's NOT (2 0)... in that, '2' would be interpreted as a fn
-((line 2) (list 2 0))
+(module+ test
+  ((line-initial 2) 2 0)
+  ((line-shorter 2) 2 0)
+  ; NOTE: it's NOT (2 0)... in that, '2' would be interpreted as a fn
+  ((line 2) (list 2 0))
+  ((line line-xs) (list 2 3)))
 
