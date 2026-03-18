@@ -1,6 +1,8 @@
 #lang racket
 
-(require malt)
+; Allow later chapters to properly include this one.
+(provide (all-defined-out) (all-from-out "chapter-1.rkt"))
+(require "chapter-1.rkt")
 
 ;; 36:25
 (define rank-wrapped
@@ -27,7 +29,9 @@
       ((scalar? t) a)
       (else (ranked (tref t 0) (add1 a))))))
 
-;; --- tests
-(rank-wrapped (tensor (tensor 1 2 3) (tensor 4 5 6)))
-(shape (tensor (tensor 1 2 3) (tensor 4 5 6)))
-(rank (tensor (tensor 0 2 3) (tensor 4 5 6)))
+(module+ main
+  ;; --- tests
+  (rank-wrapped (tensor (tensor 1 2 3) (tensor 4 5 6)))
+  (shape (tensor (tensor 1 2 3) (tensor 4 5 6)))
+  (rank (tensor (tensor 0 2 3) (tensor 4 5 6)))
+)

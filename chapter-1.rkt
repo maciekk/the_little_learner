@@ -1,6 +1,9 @@
 #lang racket
 
+; Allow later chapters to properly include this one.
+(provide (all-defined-out) (all-from-out malt))
 (require malt)
+(println "-----")
 
 ; Turns out we can use λ directly in Racket, instead of `lambda` keyword; nice!
 
@@ -32,7 +35,7 @@
          (ref θ 1)))))
 
 ;; -- testing
-(module+ test
+(module+ main
   ((line-initial 2) 2 0)
   ((line-shorter 2) 2 0)
   ; NOTE: it's NOT (2 0)... in that, '2' would be interpreted as a fn
