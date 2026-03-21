@@ -12,23 +12,25 @@
       (else
         (revise f (sub1 revs) (f θ))))))
 
-;; 81:25
-(revise
-  (lambda (θ)
-    (map (λ (p)
-           (- p 3))
-         θ))
-  5 (list 1 2 3))
+(module+ main
+  ;; 81:25
+  (revise
+    (lambda (θ)
+      (map (λ (p)
+             (- p 3))
+           θ))
+    5 (list 1 2 3))
 
-;; 83:31
-(let ((α 0.01)
-      (obj ((l2-loss line) line-xs line-ys)))
-  (let ((f (λ (θ)
-             (let ((gs (gradient-of obj θ)))
-               (list
-                (- (ref θ 0) (* α (ref gs 0)))
-                (- (ref θ 1) (* α (ref gs 1))))))))
-    (revise f 1000 (list 0.0 0.0))))
+  ;; 83:31
+  (let ((α 0.01)
+        (obj ((l2-loss line) line-xs line-ys)))
+    (let ((f (λ (θ)
+               (let ((gs (gradient-of obj θ)))
+                 (list
+                  (- (ref θ 0) (* α (ref gs 0)))
+                  (- (ref θ 1) (* α (ref gs 1))))))))
+      (revise f 1000 (list 0.0 0.0))))
+)
 
 ;; 88:44
 (define revs 1000)
@@ -45,6 +47,7 @@
       (revise f revs θ))))
 
 ;; 90:50
-(gradient-descent
- ((l2-loss line) line-xs line-ys)
- (list 0.0 0.0))
+(module+ main
+  (gradient-descent
+   ((l2-loss line) line-xs line-ys)
+   (list 0.0 0.0)))
